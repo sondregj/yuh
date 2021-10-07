@@ -21,7 +21,7 @@ func main() {
 	for {
 		_, err := stdout.Write(b)
 		if err != nil {
-			stderr.Write([]byte(err.Error()))
+			stderr.Write([]byte("yuh: " + err.Error()))
 		}
 	}
 }
