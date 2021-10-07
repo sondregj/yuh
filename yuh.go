@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"os"
 	"strings"
 )
@@ -14,10 +15,13 @@ func main() {
 
 	b := []byte(expletive + "\n")
 
+	stdout := bufio.NewWriterSize(os.Stdout, os.Getpagesize())
+	stderr := os.Stderr
+
 	for {
-		_, err := os.Stdout.Write(b)
+		_, err := stdout.Write(b)
 		if err != nil {
-			os.Stderr.Write([]byte(err.Error()))
+			stderr.Write([]byte(err.Error()))
 		}
 	}
 }
